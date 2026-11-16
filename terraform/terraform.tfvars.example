@@ -1,0 +1,2 @@
+pve_endpoint  = "https://xxx.xxx.xxx.xxx:8006/"
+pve_api_token = "terraform@pve!homelab=<segreto>"

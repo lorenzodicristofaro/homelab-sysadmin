@@ -16,7 +16,13 @@ regex = '''(?i)\b[\w]*(?:pass|passwd|password|secret|token|api_key|apikey)\b\s*[
 secretGroup = 1
 keywords = ["pass", "secret", "token", "api_key", "apikey"]
 [rules.allowlist]
-regexes = ['''(?i)example|changeme|placeholder|vault_|lookup\(''']
+regexTarget = "match"
+regexes = [
+  # segnaposto e riferimenti al vault di Ansible
+  '''(?i)example|changeme|placeholder|vault_|lookup\(''',
+  # riferimenti Terraform: api_token = var.pve_api_token
+  '''[:=]\s*(?:var|local|each|module|data)\.[\w.\[\]"-]+\s*$''',
+]
 
 [allowlist]
 description = "File di esempio e file cifrati con ansible-vault"
