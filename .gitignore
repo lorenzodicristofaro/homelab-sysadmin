@@ -1,0 +1,26 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+
+# Segreti
+.env
+*.env
+.vault_pass
+pull-secret*
+*.pem
+*.key
+
+# Immagini e archivi pesanti (template, crc)
+*.qcow2
+*.iso
+*.tar.xz
+
+# Credenziali Kubernetes/Openshift
+kubeconfig*
+
+# Varie
+*.retry
+.DS_Store
