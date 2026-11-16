@@ -1,0 +1,23 @@
+title = "homelab-sysadmin"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "proxmox-api-token"
+description = "Token API di Proxmox (utente@realm!nome=uuid)"
+regex = '''[\w.-]+@(?:pve|pam)![\w-]+=[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}'''
+keywords = ["@pve!", "@pam!"]
+
+[[rules]]
+id = "password-assegnata"
+description = "Password o segreto assegnato in chiaro (env, tfvars, yaml)"
+regex = '''(?i)\b[\w]*(?:pass|passwd|password|secret|token|api_key|apikey)\b\s*[:=]\s*["']?([^\s"'<>$]{8,})'''
+secretGroup = 1
+keywords = ["pass", "secret", "token", "api_key", "apikey"]
+[rules.allowlist]
+regexes = ['''(?i)example|changeme|placeholder|vault_|lookup\(''']
+
+[allowlist]
+description = "File di esempio e file cifrati con ansible-vault"
+paths = ['''\.example$''', '''(^|/)vault\.yml$''']
