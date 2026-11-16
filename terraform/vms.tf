@@ -51,6 +51,6 @@ resource "proxmox_virtual_environment_vm" "vm" {
     }
   }
   lifecycle {
-    ignore_changes = [started]
+    ignore_changes = [started, disk]
   }
 }
